@@ -6,7 +6,7 @@ let token; // Session token
 
 test.describe("API Challenges", () => {
   test.beforeAll(
-    "Create X-Challenger token - POST token (201)",
+    "Create X-Challenger token - @POST token (201)",
     async ({ request }) => {
       const appApi = new AppApi(request);
       const response = await appApi.challengerController.createChallengerId();
@@ -70,7 +70,7 @@ test.describe("API Challenges", () => {
     });
   });
 
-  test("Full update a todo via @PUT method", async ({ request }) => {
+  test("Full update a todo's fields via @PUT method", async ({ request }) => {
     const appApi = new AppApi(request);
     const updateToDo = new TodoBuilder()
       .addTitle(50)
@@ -89,7 +89,7 @@ test.describe("API Challenges", () => {
     });
   });
 
-  test("@GET todos list with a query filter to get only todos which are `done`", async ({
+  test("@GET todos list with a query filter", async ({
     request,
   }) => {
     const appApi = new AppApi(request);
