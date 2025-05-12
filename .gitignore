@@ -1,6 +1,5 @@
 
 # Playwright
-src
 node_modules/
 test-results/
 eslint.config.mjs
