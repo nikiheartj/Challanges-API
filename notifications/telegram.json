@@ -3,7 +3,7 @@
       "project": "Steam",
       "environment": "Prod",
       "comment": "some comment",
-      "reportLink": "REPORT_LINK/allure",
+      "reportLink": "$REPORT_LINK",
       "language": "en",
       "allureFolder": "allure-report",
       "enableChart": true
