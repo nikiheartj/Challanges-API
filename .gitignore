@@ -13,4 +13,4 @@ out/
 .vscode
 .prettierignore
 .prettierrc
-
+.DC_Store

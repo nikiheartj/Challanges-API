@@ -1,4 +1,4 @@
-<h1 >Automation UI project</h1>
+<h1 >Automation API project</h1>
 
 ## :bookmark_tabs: Сontent
 
@@ -32,7 +32,7 @@
 
 ## :ballot_box_with_check: Automated Checks
 
-- :small_blue_diamond: Create X-Challenger token - @POST token (201)
+- :small_blue_diamond: Create X-Challenger token. @POST
 - :small_blue_diamond: @GET the list of todos
 - :small_blue_diamond: Create a todo with max out content. @POST
 - :small_blue_diamond: Retrieve the current todos database for the user. @GET
