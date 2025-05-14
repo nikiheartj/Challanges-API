@@ -81,7 +81,8 @@ jobs:
         run: npm test
 
       # Save playwright-results
-      - uses: actions/upload-artifact@v4
+      - name: Save playwright-results
+        uses: actions/upload-artifact@v4
         if: always()
         continue-on-error: true
         with:
@@ -90,7 +91,8 @@ jobs:
           retention-days: 21
 
       # Save allure-results
-      - uses: actions/upload-artifact@v4
+      - name: Save allure-results
+        uses: actions/upload-artifact@v4
         if: always()
         continue-on-error: true
         with:
@@ -98,8 +100,9 @@ jobs:
           path: allure-results
           retention-days: 21
 
-      # Get results of the previous launch
-      - uses: actions/checkout@v4
+      # Get results from the previous launch
+      - name: Get results from the previous launch
+        uses: actions/checkout@v4
         if: always()
         continue-on-error: true
         with:
@@ -107,7 +110,8 @@ jobs:
           path: gh-pages
 
       # Create allure-report from allure-results
-      - uses: simple-elf/allure-report-action@master
+      - name: Create allure-report from allure-results
+        uses: simple-elf/allure-report-action@master
         if: always()
         id: allure-report
         with:
