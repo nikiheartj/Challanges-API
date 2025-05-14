@@ -54,29 +54,29 @@ jobs:
       - name: Install npm
         run: npm i
 
-      # Install PW with dependencies
-      - name: Install PW with dependencies
-        run: npx playwright install --with-deps
-
-      # # Cache Playwright browsers
-      # - name: Cache Playwright browsers
-      #   uses: actions/cache@v3
-      #   id: cache-pw
-      #   with:
-      #     path: ~/.cache/ms-playwright
-      #     key: ${{ runner.os }}-playwright-${{ hashFiles('**/package-lock.json') }}
-      #     restore-keys: |
-      #       ${{ runner.os }}-playwright-
-
-      # # If cache miss, download browsers + deps
-      # - name: Install Playwright (full)
-      #   if: steps.cache-pw.outputs.cache-hit != 'true'
+      # # Install PW with dependencies
+      # - name: Install PW with dependencies
       #   run: npx playwright install --with-deps
 
-      # # If cache hit, only install OS deps
-      # - name: Install Playwright (OS deps only)
-      #   if: steps.cache-pw.outputs.cache-hit == 'true'
-      #   run: npx playwright install-deps
+      # Cache Playwright browsers
+      - name: Cache Playwright browsers
+        uses: actions/cache@v3
+        id: cache-pw
+        with:
+          path: ~/.cache/ms-playwright
+          key: ${{ runner.os }}-playwright-${{ hashFiles('**/package-lock.json') }}
+          restore-keys: |
+            ${{ runner.os }}-playwright-
+
+      # If cache miss, download browsers + deps
+      - name: Install Playwright (full)
+        if: steps.cache-pw.outputs.cache-hit != 'true'
+        run: npx playwright install --with-deps
+
+      # If cache hit, only install OS deps
+      - name: Install Playwright (OS deps only)
+        if: steps.cache-pw.outputs.cache-hit == 'true'
+        run: npx playwright install-deps
 
       # Launch auto-tests with ENV
       - name: Launch auto-tests with ENV-override
