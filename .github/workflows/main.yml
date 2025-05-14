@@ -75,6 +75,7 @@ jobs:
           github_token: ${{secrets.GITHUB_TOKEN}}
           publish_branch: gh-pages
           publish_dir: allure-results
+          destination_dir: allure
       # Compute REPORT_LINK
       - name: Compute REPORT_LINK
         if: always()
@@ -97,7 +98,6 @@ jobs:
             -e "s|\$TELEGRAM_CHAT_ID|${{ secrets.TELEGRAM_CHAT_ID }}|g" \
             -e "s|\$REPORT_LINK|${REPORT_LINK}|g" \
             notifications/telegram.json > notifications/tmp/telegram.json
-        shell: bash
       # Send telegram notification via Allure-Notifiaction
       - name: Send Telegram notification
         run: |
