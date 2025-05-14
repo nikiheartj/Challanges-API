@@ -5,7 +5,7 @@
       "comment": "some comment",
       "reportLink": "$REPORT_LINK",
       "language": "en",
-      "allureFolder": "",
+      "allureFolder": "gh-pages/allure-report",
       "enableChart": true
     },
     "telegram": {
