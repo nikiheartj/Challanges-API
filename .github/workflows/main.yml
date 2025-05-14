@@ -13,7 +13,7 @@ on:
 env:
   TELEGRAM_BOT_TOKEN: ${{ secrets.TELEGRAM_BOT_TOKEN }}
   TELEGRAM_CHAT_ID: ${{ secrets.TELEGRAM_CHAT_ID }}
-  
+
 jobs:
   api-tests:
     timeout-minutes: 30
@@ -21,20 +21,20 @@ jobs:
     steps:
       # Clone the code from repository into runner (virtual machine)
       - uses: actions/checkout@v4
-        # Install node js
+      # Install node js
       - uses: actions/setup-node@v4
         with:
           node-version: lts/*
-        # Install npm
+      # Install npm
       - name: Install npm
         run: npm i
-        # Install PW with dependencies
+      # Install PW with dependencies
       - name: Install PW with dependencies
         run: npx playwright install --with-deps
-        # Launch auto-tests
+      # Launch auto-tests
       - name: Launch auto-tests
         run: npm test
-        # Save playwright-results
+      # Save playwright-results
       - uses: actions/upload-artifact@v4
         if: always()
         continue-on-error: true
@@ -42,7 +42,7 @@ jobs:
           name: playwright-report
           path: playwright-report
           retention-days: 21
-        # Save allure-results
+      # Save allure-results
       - uses: actions/upload-artifact@v4
         if: always()
         continue-on-error: true
@@ -50,14 +50,14 @@ jobs:
           name: allure-results
           path: allure-results
           retention-days: 21
-        # Get results of the previous launch
+      # Get results of the previous launch
       - uses: actions/checkout@v4
         if: always()
         continue-on-error: true
         with:
           ref: gh-pages
           path: gh-pages
-        # Create allure-report from allure-results
+      # Create allure-report from allure-results
       - uses: simple-elf/allure-report-action@master
         if: always()
         id: allure-report
@@ -67,7 +67,7 @@ jobs:
           allure_report: allure-report
           allure_history: allure-history
           keep_reports: 21
-        # Deploy report to GitHub Pages
+      # Deploy report to GitHub Pages
       - name: deploy report
         if: always()
         uses: peaceiris/actions-gh-pages@v4
@@ -75,7 +75,14 @@ jobs:
           github_token: ${{secrets.GITHUB_TOKEN}}
           publish_branch: gh-pages
           publish_dir: allure-history
-           # Install Java for launching JAR file
+      # Compute REPORT_LINK
+      - name: Compute REPORT_LINK
+        if: always()
+        run: |
+          # Create URL:
+          # https://niki.heartj.github.io/Chellenges-API/
+          echo "REPORT_LINK=https://${{ github.repository_owner }}.github.io/${{ github.event.repository.name }}/" >> $GITHUB_ENV
+      # Install Java for launching JAR file
       - name: Setup Java 17
         uses: actions/setup-java@v3
         with:
@@ -88,6 +95,7 @@ jobs:
           sed \
             -e "s|\$TELEGRAM_BOT_TOKEN|${{ secrets.TELEGRAM_BOT_TOKEN }}|g" \
             -e "s|\$TELEGRAM_CHAT_ID|${{ secrets.TELEGRAM_CHAT_ID }}|g" \
+            -e "s|\$REPORT_LINK|${REPORT_LINK}|g" \
             notifications/telegram.json > notifications/tmp/telegram.json
         shell: bash
       # Send telegram notification via Allure-Notifiaction
