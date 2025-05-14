@@ -83,7 +83,7 @@ jobs:
         with:
           github_token: ${{secrets.GITHUB_TOKEN}}
           publish_branch: gh-pages
-          publish_dir: allure-report
+          publish_dir: allure-history
 
       # Install Java for launching JAR file
       - name: Setup Java 17
