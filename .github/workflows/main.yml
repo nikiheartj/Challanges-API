@@ -39,7 +39,7 @@ jobs:
       - name: Launch auto-tests
         run: npm test
       # Save playwright-results
-      
+
       - uses: actions/upload-artifact@v4
         if: always()
         continue-on-error: true
@@ -75,7 +75,7 @@ jobs:
           allure_report: allure-report
           allure_history: allure-history
           keep_reports: 21
-          
+
       # Deploy report to GitHub Pages
       - name: Deploy report
         if: always()
@@ -84,14 +84,6 @@ jobs:
           github_token: ${{secrets.GITHUB_TOKEN}}
           publish_branch: gh-pages
           publish_dir: allure-report
-
-      # Compute REPORT_LINK
-      # - name: Compute REPORT_LINK
-      #   if: always()
-      #   run: |
-      #     # Create URL:
-      #     # https://nikiheartj.github.io/Challenges-API
-      #     echo "REPORT_LINK=https://${{ github.repository_owner }}.github.io/${{ github.event.repository.name }}/" >> $GITHUB_ENV
 
       # Install Java for launching JAR file
       - name: Setup Java 17
