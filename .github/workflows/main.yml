@@ -42,6 +42,14 @@ jobs:
           distribution: "temurin"
           java-version: "17"
 
+      # Caching npm-dependecies to speed up subsequent builds
+      - uses: actions/cache@v3
+        with:
+          path: ~/.npm
+          key: ${{ runner.os }}-npm-${{ hashFiles('**/package-lock.json') }}
+          restore-keys: |
+            ${{ runner.os }}-npm-
+
       # Install npm
       - name: Install npm
         run: npm i
