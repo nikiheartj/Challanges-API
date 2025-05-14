@@ -102,7 +102,7 @@ jobs:
           publish_branch: gh-pages
           publish_dir: allure-history
 
-      # Render telegram.json with the secrets
+      # Generate telegram.json with the secrets
       - name: Render notifications config
         run: |
           mkdir -p notifications/tmp

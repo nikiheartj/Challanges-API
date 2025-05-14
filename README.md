@@ -61,7 +61,7 @@ npm run open-report
 
 <a href="https://jenkins.autotests.cloud/job/AD_demo_ui_steam/"><img src="src/images/gitgub-actions.png" alt="GitHub"/></a>
 
-> The workflow is configured for manual triggering via GitHub Actions.
+> The workflow is configured for manual triggering via GitHub Actions, and you can always set up the relevant environment for your tests.
 
 </p>
 
