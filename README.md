@@ -17,10 +17,7 @@
 - <a href="#testops">Integration with TestOps</a>
 
 - <a href="#telegram">Notifications in Telegram using a bot</a>
-
-- <a href="#video">Example of a test run in Playwright</a>
-
-<a id="tools"></a>
+  <a id="tools"></a>
 
 ## Technology Stack
 
@@ -50,10 +47,9 @@
 npm t
 ```
 
-### Create & open allure-report locally
+### Open allure-report locally
 
 ```
-npm run create-report
 npm run open-report
 ```
 
@@ -86,18 +82,18 @@ npm run open-report
 
 <a id="allure"></a>
 
-## <img src="src/images/allure.png" width="25" height="25"/></a> Test reports in [Allure Report](https://nikiheartj.github.io/Steam-UI/17/index.html#graph)
+## <img src="src/images/allure.png" width="25" height="25"/></a> Test reports in [Allure Report](https://nikiheartj.github.io/Challenges-API/26/index.html)
 
 ### Main window
 
 <p align="center">
-<img title="Allure Overview Dashboard" src="src/images/allure-main.png">
+<img title="Allure Overview Dashboard" src="src/images/mainAllure.png">
 </p>
 
 ### Graphs window
 
 <p align="center">
-<img title="Allure Graphs" src="src/images/allure-graph.png">
+<img title="Allure Graphs" src="src/images/graphsAllure.png">
 </p>
 
 ### Tests
@@ -105,7 +101,7 @@ npm run open-report
 > Each check is accompanied by a screenshot of the last action in the test, record & trace.
 
 <p align="center">
-<img title="Allure Tests" src="src/images/test-cases-report.png">
+<img title="Allure Tests" src="src/images/suitsAllure.png">
 </p>
 
 <a id="testops"></a>
@@ -130,14 +126,4 @@ npm run open-report
 
 <p >
 <img title="telegram bot" src="src/images/notification.png">
-</p>
-
-<a id="video"></a>
-
-## <img src="src/images/playwright.svg" width="25" height="25"/></a> Playwright Test Run Example
-
-> Test run recording: "Add a game to the shopping cart".
-
-<p align="center">
-  <img title="Playwright Record" src="src/images/test.gif">
 </p>
