@@ -3,7 +3,7 @@
       "project": "Steam",
       "environment": "Prod",
       "comment": "some comment",
-      "reportLink": "https://nikiheartj.github.io/Steam-UI",
+      "reportLink": "https://nikiheartj.github.io/Challenges-API",
       "language": "en",
       "allureFolder": "allure-report",
       "enableChart": true
