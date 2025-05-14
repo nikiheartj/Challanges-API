@@ -10,6 +10,10 @@ on:
   # Manual hook for launch
   workflow_dispatch:
 
+env:
+  TELEGRAM_BOT_TOKEN: ${{ secrets.TELEGRAM_BOT_TOKEN }}
+  TELEGRAM_CHAT_ID: ${{ secrets.TELEGRAM_CHAT_ID }}
+  
 jobs:
   api-tests:
     timeout-minutes: 30
@@ -71,3 +75,22 @@ jobs:
           github_token: ${{secrets.GITHUB_TOKEN}}
           publish_branch: gh-pages
           publish_dir: allure-history
+           # Install Java for launching JAR file
+      - name: Setup Java 17
+        uses: actions/setup-java@v3
+        with:
+          distribution: "temurin"
+          java-version: "17"
+      # Render telegram.json with the secrets
+      - name: Render notifications config
+        run: |
+          mkdir -p notifications/tmp
+          sed \
+            -e "s|\$TELEGRAM_BOT_TOKEN|${{ secrets.TELEGRAM_BOT_TOKEN }}|g" \
+            -e "s|\$TELEGRAM_CHAT_ID|${{ secrets.TELEGRAM_CHAT_ID }}|g" \
+            notifications/telegram.json > notifications/tmp/telegram.json
+        shell: bash
+      # Send telegram notification via Allure-Notifiaction
+      - name: Send Telegram notification
+        run: |
+          java "-DconfigFile=notifications/tmp/telegram.json" -jar notifications/allure-notifications-4.9.0.jar
