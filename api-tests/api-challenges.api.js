@@ -1,6 +1,6 @@
 import { test, expect } from "@playwright/test";
 import { TodoBuilder } from "../src/builder/index";
-import { AppApi } from "../src/controllers/appApi";
+import { AppApi } from "../src/controllers/appApi.controller";
 
 let token; // Session token
 
