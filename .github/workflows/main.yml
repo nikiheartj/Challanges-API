@@ -30,9 +30,17 @@ jobs:
       - uses: actions/checkout@v4
 
       # Install node js
-      - uses: actions/setup-node@v4
+      - name: Setup nodejs
+        uses: actions/setup-node@v4
         with:
           node-version: lts/*
+
+      # Install Java for launching JAR file
+      - name: Setup Java 17
+        uses: actions/setup-java@v3
+        with:
+          distribution: "temurin"
+          java-version: "17"
 
       # Install npm
       - name: Install npm
@@ -93,13 +101,6 @@ jobs:
           github_token: ${{secrets.GITHUB_TOKEN}}
           publish_branch: gh-pages
           publish_dir: allure-history
-
-      # Install Java for launching JAR file
-      - name: Setup Java 17
-        uses: actions/setup-java@v3
-        with:
-          distribution: "temurin"
-          java-version: "17"
 
       # Render telegram.json with the secrets
       - name: Render notifications config
