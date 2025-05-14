@@ -1,5 +1,5 @@
 # Name workflow
-name: pw test
+name: api-tests
 
 # When launch auto-tests
 on:
@@ -7,8 +7,14 @@ on:
     branches: [main, master]
   pull_request:
     branches: [main, master]
+
   # Manual hook for launch
   workflow_dispatch:
+    inputs:
+      BaseURL:
+        description: "URL for tests"
+        required: true
+        default: "https://apichallenges.herokuapp.com"
 
 env:
   TELEGRAM_BOT_TOKEN: ${{ secrets.TELEGRAM_BOT_TOKEN }}
@@ -22,6 +28,7 @@ jobs:
     steps:
       # Clone the code from repository into runner (virtual machine)
       - uses: actions/checkout@v4
+
       # Install node js
       - uses: actions/setup-node@v4
         with:
@@ -35,11 +42,13 @@ jobs:
       - name: Install PW with dependencies
         run: npx playwright install --with-deps
 
-      # Launch auto-tests
-      - name: Launch auto-tests
+      # Launch auto-tests with ENV
+      - name: Launch auto-tests with ENV-override
+        env:
+          BASE_URL: ${{ github.event.inputs.BaseURL }}
         run: npm test
-      # Save playwright-results
 
+      # Save playwright-results
       - uses: actions/upload-artifact@v4
         if: always()
         continue-on-error: true
