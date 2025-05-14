@@ -13,6 +13,7 @@ on:
 env:
   TELEGRAM_BOT_TOKEN: ${{ secrets.TELEGRAM_BOT_TOKEN }}
   TELEGRAM_CHAT_ID: ${{ secrets.TELEGRAM_CHAT_ID }}
+  REPORT_LINK_TELEGRAM: ${{ secrets.REPORT_LINK_TELEGRAM }}
 
 jobs:
   api-tests:
@@ -68,13 +69,13 @@ jobs:
           allure_history: allure-history
           keep_reports: 21
       # Deploy report to GitHub Pages
-      - name: deploy report
+      - name: Deploy report
         if: always()
         uses: peaceiris/actions-gh-pages@v4
         with:
           github_token: ${{secrets.GITHUB_TOKEN}}
           publish_branch: gh-pages
-          publish_dir: gh-pages/allure-report
+          publish_dir: allure-report
       # Compute REPORT_LINK
       - name: Compute REPORT_LINK
         if: always()
