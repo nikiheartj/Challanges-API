@@ -74,7 +74,7 @@ npm run open-report
 
 <p align="center">
 
-<a href="https://jenkins.autotests.cloud/job/AD_demo_ui_steam/"><img src="src/images/jenkins_dashboard.png" alt="Jenkins"/></a>
+<a href="https://jenkins.autotests.cloud"><img src="src/images/jenkins_dashboard.png" alt="Jenkins"/></a>
 
 > To start running the tests, you need to log in to the Jenkins website, navigate to the job, and click "Build Now." After the pipeline is completed, Allure report will be generated, and the test results will be sent to Allure TestOps and Telegram.
 

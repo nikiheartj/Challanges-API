@@ -26,16 +26,14 @@ jobs:
     timeout-minutes: 30
     runs-on: ubuntu-latest
     steps:
-      # Clone the code from repository into runner (virtual machine)
-      - uses: actions/checkout@v4
+      - name: Clone the code from repository into runner (virtual machine)
+        uses: actions/checkout@v4
 
-      # Install node js
       - name: Setup nodejs
         uses: actions/setup-node@v4
         with:
           node-version: lts/*
 
-      # Install Java for launching JAR file
       - name: Setup Java 17
         uses: actions/setup-java@v3
         with:
@@ -50,7 +48,6 @@ jobs:
           restore-keys: |
             ${{ runner.os }}-npm-
 
-      # Install npm
       - name: Install npm
         run: npm i
 
@@ -58,7 +55,6 @@ jobs:
       # - name: Install PW with dependencies
       #   run: npx playwright install --with-deps
 
-      # Cache Playwright browsers
       - name: Cache Playwright browsers
         uses: actions/cache@v3
         id: cache-pw
@@ -78,13 +74,11 @@ jobs:
         if: steps.cache-pw.outputs.cache-hit == 'true'
         run: npx playwright install-deps
 
-      # Launch auto-tests with ENV
       - name: Launch auto-tests with ENV-override
         env:
           BASE_URL: ${{ github.event.inputs.BaseURL }}
         run: npm test
 
-      # Save playwright-results
       - name: Save playwright-results
         uses: actions/upload-artifact@v4
         if: always()
@@ -94,7 +88,6 @@ jobs:
           path: playwright-report
           retention-days: 21
 
-      # Save allure-results
       - name: Save allure-results
         uses: actions/upload-artifact@v4
         if: always()
@@ -104,7 +97,6 @@ jobs:
           path: allure-results
           retention-days: 21
 
-      # Get results from the previous launch
       - name: Get results from the previous launch
         uses: actions/checkout@v4
         if: always()
@@ -113,7 +105,6 @@ jobs:
           ref: gh-pages
           path: gh-pages
 
-      # Create allure-report from allure-results
       - name: Create allure-report from allure-results
         uses: simple-elf/allure-report-action@master
         if: always()
@@ -125,8 +116,7 @@ jobs:
           allure_history: allure-history
           keep_reports: 21
 
-      # Deploy report to GitHub Pages
-      - name: Deploy report
+      - name: Deploy report to GitHub Pages
         if: always()
         uses: peaceiris/actions-gh-pages@v4
         with:
@@ -134,8 +124,7 @@ jobs:
           publish_branch: gh-pages
           publish_dir: allure-history
 
-      # Generate telegram.json with the secrets
-      - name: Generate notifications config
+      - name: Generate telegram.json with the secrets
         run: |
           mkdir -p notifications/tmp
           sed \
@@ -144,7 +133,6 @@ jobs:
             -e "s|\$REPORT_LINK_TELEGRAM|${{ secrets.REPORT_LINK_TELEGRAM }}|g" \
             notifications/telegram.json > notifications/tmp/telegram.json
 
-      # Send telegram notification via Allure-Notifiaction
       - name: Send Telegram notification
         run: |
           java "-DconfigFile=notifications/tmp/telegram.json" -jar notifications/allure-notifications-4.9.0.jar

@@ -91,7 +91,7 @@ test.describe("API Challenges", () => {
 
   test("@GET todos list with a query filter", async ({ request }) => {
     const appApi = new AppApi(request);
-    const query = "true"; //Set query as a value to filter todos
+    const query = "/todos?doneStatus=true"; //Set query as a value to filter todos
     const response = await appApi.todosController.filterByQuery(token, query);
 
     const body = await response.json();

@@ -53,7 +53,7 @@ export class TodosController {
 
   async filterByQuery(token, query) {
     return await test.step("Filter todos by the query", async () => {
-      const response = await this.request.get(`/todos?doneStatus=${query}`, {
+      const response = await this.request.get(`${query}`, {
         headers: {
           "x-challenger": token,
         },
