@@ -1,7 +1,0 @@
-"DESCRIPTION","DURATION IN MS","NAME","PARENT SUITE","START TIME","STATUS","STOP TIME","SUB SUITE","SUITE","TEST CLASS","TEST METHOD"
-"","45","@GET the list of todos","api-tests","Wed May 14 12:29:17 GMT 2025","passed","Wed May 14 12:29:17 GMT 2025","API Challenges","api-tests/api-challenges.api.js","",""
-"","33","Full update a todo's fields via @PUT method","api-tests","Wed May 14 12:29:18 GMT 2025","passed","Wed May 14 12:29:18 GMT 2025","API Challenges","api-tests/api-challenges.api.js","",""
-"","44","Create a todo with max out content. @POST","api-tests","Wed May 14 12:29:17 GMT 2025","passed","Wed May 14 12:29:17 GMT 2025","API Challenges","api-tests/api-challenges.api.js","",""
-"","26","@GET todos list with a query filter","api-tests","Wed May 14 12:29:18 GMT 2025","passed","Wed May 14 12:29:18 GMT 2025","API Challenges","api-tests/api-challenges.api.js","",""
-"","115","Retrieve the current todos database for the user. @GET","api-tests","Wed May 14 12:29:18 GMT 2025","passed","Wed May 14 12:29:18 GMT 2025","API Challenges","api-tests/api-challenges.api.js","",""
-"","47","@DELETE a todo in the todos list","api-tests","Wed May 14 12:29:18 GMT 2025","passed","Wed May 14 12:29:18 GMT 2025","API Challenges","api-tests/api-challenges.api.js","",""
