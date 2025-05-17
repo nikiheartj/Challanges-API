@@ -10,18 +10,14 @@
 
 - <a href="#github">Running tests in GitHub Actions</a>
 
-- <a href="#jenkins">Running tests in Jenkins</a>
-
 - <a href="#allure">Test reports in Allure Report</a>
-
-- <a href="#testops">Integration with TestOps</a>
 
 - <a href="#telegram">Notifications in Telegram using a bot</a>
   <a id="tools"></a>
 
 ## Technology Stack
 
-| JavaScript                                                                                                    | VS Code                                                                                                                             | GitHub                                                                                                    | Playwright                                                                                                         | Allure                                                                                                          |                                                                                                        Telegram |
+| JavaScript                                                                                                    | VS Code                                                                                                                             | GitHub                                                                                                    | Playwright                                                                                                         | Allure                                                                                                          | Telegram                                                                                                        |
 | :------------------------------------------------------------------------------------------------------------ | ----------------------------------------------------------------------------------------------------------------------------------- | --------------------------------------------------------------------------------------------------------- | ------------------------------------------------------------------------------------------------------------------ | --------------------------------------------------------------------------------------------------------------- | --------------------------------------------------------------------------------------------------------------- |
 | <a href="https://nodejs.org/en"><img src="src/images/JavaScript.svg" width="50" height="50"  alt="JScr"/></a> | <a id ="tech" href="https://code.visualstudio.com/"><img src="src/images/VSCode Image.png" width="50" height="50"  alt="VSco"/></a> | <a href="https://github.com/"><img src="src/images/gitHub.svg" width="50" height="50"  alt="Github"/></a> | <a href="https://playwright.dev/"><img src="src/images/playwright.svg" width="50" height="50"  alt="Playwri"/></a> | <a href="https://allurereport.org/"><img src="src/images/allure.png" width="50" height="50"  alt="Allure"/></a> | <a href="https://telegram.org/"><img src="src/images/telegram.svg" width="50" height="50"  alt="Telegram"/></a> |
 
